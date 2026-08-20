@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TechService | Servicio Técnico</title>
+
+    <style>
+
+        /* =========================
+           ESTILOS GENERALES
+        ========================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f4f7fb;
+            color: #1e293b;
+        }
+
+        /* =========================
+           ENCABEZADO
+        ========================== */
+
+        header {
+            background: linear-gradient(135deg, #071a2f, #0d47a1);
+            color: white;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #29b6f6;
+        }
+
+        /* =========================
+           MENÚ
+        ========================== */
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #29b6f6;
+        }
+
+        /* =========================
+           PORTADA
+        ========================== */
+
+        .inicio {
+            min-height: 600px;
+
+            background:
+                linear-gradient(
+                    rgba(3, 20, 40, 0.78),
+                    rgba(3, 20, 40, 0.78)
+                ),
+
+                url("https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=1600&q=80");
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+            color: white;
+            padding: 40px;
+        }
+
+        .inicio-contenido {
+            max-width: 800px;
+        }
+
+        .inicio h1 {
+            font-size: 55px;
+            margin-bottom: 20px;
+        }
+
+        .inicio h1 span {
+            color: #29b6f6;
+        }
+
+        .inicio p {
+            font-size: 20px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        /* =========================
+           BOTONES
+        ========================== */
+
+        .boton {
+            display: inline-block;
+            padding: 13px 25px;
+            border: none;
+            border-radius: 8px;
+            background-color: #0d6efd;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .boton:hover {
+            background-color: #084298;
+            transform: translateY(-3px);
+        }
+
+        .boton-secundario {
+            background-color: transparent;
+            border: 2px solid white;
+            margin-left: 10px;
+        }
+
+        .boton-secundario:hover {
+            background-color: white;
+            color: #0d47a1;
+        }
+
+        /* =========================
+           SECCIONES
+        ========================== */
+
+        section {
+            padding: 80px 8%;
+        }
+
+        .titulo {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .titulo h2 {
+            font-size: 38px;
+            margin-bottom: 10px;
+            color: #0d47a1;
+        }
+
+        .titulo p {
+            color: #64748b;
+        }
+
+        /* =========================
+           SERVICIOS
+        ========================== */
+
+        .padre {
+            width: 100%;
+        }
+
+        .hijo {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .nieto {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+        .nieto:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .nieto img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .nieto img:hover {
+            filter: brightness(0.8);
+        }
+
+        .nieto-contenido {
+            padding: 25px;
+        }
+
+        .nieto h3 {
+            color: #0d47a1;
+            margin-bottom: 15px;
+            font-size: 23px;
+        }
+
+        .nieto p {
+            line-height: 1.6;
+            color: #64748b;
+            margin-bottom: 20px;
+        }
+
+        /* =========================
+           QUIENES SOMOS
+        ========================== */
+
+        .historia {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .historia img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .historia-texto h2 {
+            color: #0d47a1;
+            font-size: 35px;
+            margin-bottom: 20px;
+        }
+
+        .historia-texto p {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #52606d;
+        }
+
+        .numero {
+            font-size: 40px;
+            font-weight: bold;
+            color: #0d6efd;
+        }
+
+        /* =========================
+           MISION Y VISION
+        ========================== */
+
+        .mision {
+            background-color: #071a2f;
+            color: white;
+        }
+
+        .mision .titulo h2 {
+            color: white;
+        }
+
+        .mv-contenedor {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .mv {
+            background-color: #102a43;
+            padding: 35px;
+            border-radius: 15px;
+        }
+
+        .mv h3 {
+            color: #29b6f6;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .mv p {
+            line-height: 1.8;
+            color: #d7e3ef;
+        }
+
+        /* =========================
+           VALORES
+        ========================== */
+
+        .valores {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .valor {
+            background: white;
+            padding: 30px 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+
+        .valor:hover {
+            transform: scale(1.04);
+        }
+
+        .valor .icono {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .valor h3 {
+            color: #0d47a1;
+            margin-bottom: 10px;
+        }
+
+        /* =========================
+           CONTACTO
+        ========================== */
+
+        .contacto {
+            background-color: #eaf2f8;
+        }
+
+        .contacto-contenedor {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contacto-info h2 {
+            font-size: 35px;
+            color: #0d47a1;
+            margin-bottom: 20px;
+        }
+
+        .contacto-info p {
+            margin: 18px 0;
+            font-size: 18px;
+        }
+
+        form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 15px;
+            border: 1px solid #cbd5e1;
+            border-radius: 7px;
+            font-size: 16px;
+        }
+
+        textarea {
+            min-height: 130px;
+            resize: vertical;
+        }
+
+        form button {
+            width: 100%;
+        }
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            background-color: #030b15;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        /* =========================
+           VENTANA MODAL
+        ========================== */
+
+        .modal {
+            display: none;
+
+            position: fixed;
+            z-index: 2000;
+
+            inset: 0;
+
+            background-color: rgba(0,0,0,0.75);
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 20px;
+        }
+
+        .modal.activo {
+            display: flex;
+        }
+
+        .modal-contenido {
+            background-color: white;
+            color: #1e293b;
+
+            max-width: 600px;
+            width: 100%;
+
+            padding: 35px;
+
+            border-radius: 15px;
+
+            position: relative;
+
+            animation: aparecer 0.3s;
+        }
+
+        .cerrar {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+
+            font-size: 30px;
+
+            background: none;
+            border: none;
+
+            cursor: pointer;
+        }
+
+        .modal-contenido h2 {
+            color: #0d47a1;
+            margin-bottom: 20px;
+        }
+
+        .modal-contenido p {
+            line-height: 1.7;
+        }
+
+        @keyframes aparecer {
+
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================== */
+
+        @media (max-width: 900px) {
+
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 12px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hijo,
+            .historia,
+            .mv-contenedor,
+            .contacto-contenedor {
+                grid-template-columns: 1fr;
+            }
+
+            .valores {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .inicio h1 {
+                font-size: 42px;
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            .valores {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                font-size: 14px;
+            }
+
+            .inicio {
+                min-height: 550px;
+            }
+
+            .inicio h1 {
+                font-size: 35px;
+            }
+
+            .boton-secundario {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =================================================
+     ENCABEZADO
+================================================== -->
+
+<header>
+
+    <div class="logo">
+        Tech<span>Service</span>
+    </div>
+
+    <nav>
+
+        <ul>
+
+            <li>
+                <a href="#inicio">Inicio</a>
+            </li>
+
+            <li>
+                <a href="#servicios">Servicios</a>
+            </li>
+
+            <li>
+                <a href="#capacitaciones">Capacitaciones</a>
+            </li>
+
+            <li>
+                <a href="#nosotros">Quiénes somos</a>
+            </li>
+
+            <li>
+                <a href="#contacto">Contacto</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+</header>
+
+
+<!-- =================================================
+     INICIO
+================================================== -->
+
+<section class="inicio" id="inicio">
+
+    <div class="inicio-contenido">
+
+        <h1>
+            Soluciones
+            <span>tecnológicas</span>
+        </h1>
+
+        <p>
+            Servicio técnico especializado, mantenimiento,
+            soporte informático y capacitación tecnológica
+            para personas y empresas.
+        </p>
+
+        <a href="#servicios" class="boton">
+            Ver servicios
+        </a>
+
+        <a href="#contacto" class="boton boton-secundario">
+            Contactarnos
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =================================================
+     SERVICIOS
+================================================== -->
+
+<section id="servicios">
+
+    <div class="titulo">
+
+        <h2>Nuestros servicios</h2>
+
+        <p>
+            Soluciones para mantener tus equipos
+            funcionando correctamente.
+        </p>
+
+    </div>
+
+
+    <div class="padre">
+
+        <div class="hijo">
+
+
+            <!-- SERVICIO 1 -->
+
+            <div class="nieto">
+
+                <img
+                    src="https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=900&q=80"
+                    alt="Soporte técnico"
+                    onclick="mostrarImagen(this.src)"
+                >
+
+                <div class="nieto-contenido">
+
+                    <h3>🛠️ Soporte Técnico</h3>
+
+                    <p>
+                        Diagnóstico y solución de problemas
+                        de computadoras, laptops y equipos
+                        informáticos.
+                    </p>
+
+                    <button
+                        class="boton"
+                        onclick="mostrarServicio('Soporte Técnico')">
+
+                        Más información
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- SERVICIO 2 -->
+
+            <div class="nieto">
+
+                <img
+                    src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=900&q=80"
+                    alt="Capacitaciones"
+                    onclick="mostrarImagen(this.src)"
+                >
+
+                <div class="nieto-contenido">
+
+                    <h3>🎓 Capacitaciones</h3>
+
+                    <p>
+                        Capacitaciones sobre herramientas
+                        informáticas, software y tecnologías
+                        digitales.
+                    </p>
+
+                    <button
+                        class="boton"
+                        onclick="mostrarServicio('Capacitaciones')">
+
+                        Más información
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- SERVICIO 3 -->
+
+            <div class="nieto">
+
+                <img
+                    src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80"
+                    alt="Hardware y software"
+                    onclick="mostrarImagen(this.src)"
+                >
+
+                <div class="nieto-contenido">
+
+                    <h3>💻 Software y Hardware</h3>
+
+                    <p>
+                        Instalación, configuración y mantenimiento
+                        de software y componentes de hardware.
+                    </p>
+
+                    <button
+                        class="boton"
+                        onclick="mostrarServicio('Software y Hardware')">
+
+                        Más información
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =================================================
+     CAPACITACIONES
+================================================== -->
+
+<section id="capacitaciones">
+
+    <div class="titulo">
+
+        <h2>Capacitaciones</h2>
+
+        <p>
+            Aprende a utilizar mejor las herramientas tecnológicas.
+        </p>
+
+    </div>
+
+
+    <div class="historia">
+
+        <img
+            src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1000&q=80"
+            alt="Capacitación tecnológica"
+            onclick="mostrarImagen(this.src)"
+        >
+
+        <div class="historia-texto">
+
+            <h2>
+                Formación tecnológica
+            </h2>
+
+            <p>
+                Ofrecemos capacitaciones para mejorar los
+                conocimientos tecnológicos de nuestros clientes
+                y colaboradores.
+            </p>
+
+            <p>
+                Nuestros cursos pueden incluir herramientas
+                ofimáticas, mantenimiento básico, seguridad
+                informática y uso responsable de la tecnología.
+            </p>
+
+            <button
+                class="boton"
+                onclick="mostrarServicio('Capacitaciones tecnológicas')">
+
+                Conocer capacitaciones
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =================================================
+     QUIENES SOMOS
+================================================== -->
+
+<section id="nosotros">
+
+    <div class="titulo">
+
+        <h2>Quiénes somos</h2>
+
+        <p>
+            Una empresa construida con experiencia y tecnología.
+        </p>
+
+    </div>
+
+
+    <div class="historia">
+
+        <div class="historia-texto">
+
+            <h2>
+                Más de 20 años de experiencia
+            </h2>
+
+            <p>
+                Durante más de 20 años hemos desarrollado
+                proyectos relacionados con el soporte técnico,
+                mantenimiento informático y soluciones
+                tecnológicas.
+            </p>
+
+            <p>
+                Nuestra experiencia nos ha permitido crecer junto
+                con nuestros clientes y adaptarnos a los constantes
+                cambios de la tecnología.
+            </p>
+
+            <p>
+                Nuestro objetivo es ofrecer un servicio confiable,
+                responsable y orientado a resolver las necesidades
+                de cada cliente.
+            </p>
+
+            <div>
+
+                <span class="numero">20+</span>
+
+                <p>
+                    años brindando soluciones tecnológicas
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <img
+            src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1000&q=80"
+            alt="Equipo de trabajo"
+            onclick="mostrarImagen(this.src)"
+        >
+
+    </div>
+
+</section>
+
+
+<!-- =================================================
+     MISION Y VISION
+================================================== -->
+
+<section class="mision">
+
+    <div class="titulo">
+
+        <h2>
+            Misión y visión
+        </h2>
+
+    </div>
+
+
+    <div class="mv-contenedor">
+
+
+        <div class="mv">
+
+            <h3>Nuestra misión</h3>
+
+            <p>
+                Brindar servicios de soporte técnico y soluciones
+                tecnológicas eficientes, confiables y accesibles,
+                ayudando a nuestros clientes a aprovechar mejor
+                sus herramientas tecnológicas.
+            </p>
+
+        </div>
+
+
+        <div class="mv">
+
+            <h3>Nuestra visión</h3>
+
+            <p>
+                Ser una empresa reconocida por la calidad de sus
+                servicios tecnológicos, la innovación y el compromiso
+                con nuestros clientes.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =================================================
+     VALORES
+================================================== -->
+
+<section>
+
+    <div class="titulo">
+
+        <h2>
+            Nuestros valores
+        </h2>
+
+        <p>
+            Principios que guían nuestra manera de trabajar.
+        </p>
+
+    </div>
+
+
+    <div class="valores">
+
+
+        <div class="valor">
+
+            <div class="icono">
+                🤝
+            </div>
+
+            <h3>
+                Trabajo en equipo
+            </h3>
+
+            <p>
+                Trabajamos juntos para alcanzar mejores resultados.
+            </p>
+
+        </div>
+
+
+        <div class="valor">
+
+            <div class="icono">
+                🧩
+            </div>
+
+            <h3>
+                Cooperación
+            </h3>
+
+            <p>
+                Colaboramos con nuestros clientes y compañeros.
+            </p>
+
+        </div>
+
+
+        <div class="valor">
+
+            <div class="icono">
+                🛡️
+            </div>
+
+            <h3>
+                Responsabilidad
+            </h3>
+
+            <p>
+                Cumplimos nuestros compromisos con seriedad.
+            </p>
+
+        </div>
+
+
+        <div class="valor">
+
+            <div class="icono">
+                💡
+            </div>
+
+            <h3>
+                Innovación
+            </h3>
+
+            <p>
+                Buscamos nuevas soluciones para los desafíos tecnológicos.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =================================================
+     CONTACTO
+================================================== -->
+
+<section class="contacto" id="contacto">
+
+    <div class="titulo">
+
+        <h2>
+            Contáctanos
+        </h2>
+
+        <p>
+            Estamos preparados para ayudarte.
+        </p>
+
+    </div>
+
+
+    <div class="contacto-contenedor">
+
+
+        <div class="contacto-info">
+
+            <h2>
+                ¿Necesitas soporte?
+            </h2>
+
+            <p>
+                📍 Lima, Perú
+            </p>
+
+            <p>
+                📞 +51 999 999 999
+            </p>
+
+            <p>
+                ✉️ contacto@techservice.com
+            </p>
+
+            <p>
+                Puedes escribirnos utilizando el formulario
+                y nuestro equipo se pondrá en contacto contigo.
+            </p>
+
+        </div>
+
+
+        <form onsubmit="enviarFormulario(event)">
+
+            <input
+                type="text"
+                id="nombre"
+                placeholder="Nombre completo"
+                required
+            >
+
+            <input
+                type="email"
+                id="correo"
+                placeholder="Correo electrónico"
+                required
+            >
+
+            <textarea
+                id="mensaje"
+                placeholder="Escribe tu consulta..."
+                required
+            ></textarea>
+
+            <button
+                type="submit"
+                class="boton">
+
+                Enviar mensaje
+
+            </button>
+
+        </form>
+
+
+    </div>
+
+</section>
+
+
+<!-- =================================================
+     FOOTER
+================================================== -->
+
+<footer>
+
+    <p>
+        © 2026 TechService | Servicio Técnico
+    </p>
+
+    <p>
+        Tecnología • Soporte • Innovación
+    </p>
+
+</footer>
+
+
+<!-- =================================================
+     MODAL
+================================================== -->
+
+<div class="modal" id="modal">
+
+    <div class="modal-contenido">
+
+        <button
+            class="cerrar"
+            onclick="cerrarModal()">
+
+            ×
+
+        </button>
+
+        <h2 id="modalTitulo">
+            Información
+        </h2>
+
+        <p id="modalTexto">
+            Información del servicio.
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- =================================================
+     JAVASCRIPT
+================================================== -->
+
+<script>
+
+
+    /* ==========================================
+       INFORMACIÓN DE SERVICIOS
+    ========================================== */
+
+    function mostrarServicio(servicio) {
+
+        let titulo = "";
+        let texto = "";
+
+
+        if (servicio === "Soporte Técnico") {
+
+            titulo = "🛠️ Soporte Técnico";
+
+            texto =
+                "Ofrecemos diagnóstico y solución de problemas " +
+                "informáticos, mantenimiento de computadoras, " +
+                "instalación de programas y optimización de equipos.";
+
+        }
+
+
+        else if (servicio === "Capacitaciones") {
+
+            titulo = "Capacitaciones";
+
+            texto =
+                "Realizamos capacitaciones sobre herramientas " +
+                "ofimáticas, tecnologías digitales, seguridad " +
+                "informática y uso de software.";
+
+        }
+
+
+        else if (servicio === "Software y Hardware") {
+
+            titulo = "💻 Software y Hardware";
+
+            texto =
+                "Trabajamos con instalación y configuración de " +
+                "sistemas operativos, programas, componentes de " +
+                "hardware y mantenimiento preventivo.";
+
+        }
+
+
+        else {
+
+            titulo = "🎓 Capacitaciones tecnológicas";
+
+            texto =
+                "Nuestros programas de capacitación buscan " +
+                "mejorar las habilidades tecnológicas de nuestros " +
+                "clientes mediante contenidos prácticos.";
+
+        }
+
+
+        document.getElementById("modalTitulo").textContent = titulo;
+
+        document.getElementById("modalTexto").textContent = texto;
+
+        document.getElementById("modal").classList.add("activo");
+
+    }
+
+
+    /* ==========================================
+       MOSTRAR IMAGEN
+    ========================================== */
+
+    function mostrarImagen(imagen) {
+
+        document.getElementById("modalTitulo").textContent =
+            "Vista de imagen";
+
+        document.getElementById("modalTexto").innerHTML =
+            '<img src="' +
+            imagen +
+            '" style="width:100%; border-radius:10px;">';
+
+        document.getElementById("modal").classList.add("activo");
+
+    }
+
+
+    /* ==========================================
+       CERRAR MODAL
+    ========================================== */
+
+    function cerrarModal() {
+
+        document
+            .getElementById("modal")
+            .classList.remove("activo");
+
+    }
+
+
+    /* ==========================================
+       FORMULARIO
+    ========================================== */
+
+    function enviarFormulario(event) {
+
+        event.preventDefault();
+
+        let nombre =
+            document.getElementById("nombre").value;
+
+        alert(
+            "¡Gracias, " +
+            nombre +
+            "! Hemos recibido tu mensaje."
+        );
+
+        event.target.reset();
+
+    }
+
+
+    /* ==========================================
+       CERRAR MODAL AL HACER CLICK FUERA
+    ========================================== */
+
+    document
+        .getElementById("modal")
+        .addEventListener("click", function(event) {
+
+            if (event.target === this) {
+
+                cerrarModal();
+
+            }
+
+        });
+
+
+</script>
+
+
+</body>
+
+</html>
